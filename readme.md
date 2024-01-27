@@ -12,21 +12,17 @@ git clone https://github.com/KarloPry/test-docker-2.git
 ```bash
 docker network create my-bridge-network
 ```
-## 3. Crear la imagen de la BD
-```bash
-docker run --name sql-py --network=my-bridge-network -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE="testdb" -d mysql:latest
-```
-## 4. Crear la imagen del CLI
+## 3. Crear la imagen del CLI
 ```bash
 docker build -t cli-py .
 ```
-## 5. Correr el servidor de la BD
+## 4. Correr el servidor de la BD
 ```bash
 docker run --name sql-py --network=my-bridge-network -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE="testdb" -d mysql:latest
 ```
 Cuando creamos el contenedor de la BD, definimos una primer base de datos llamada
 testbd, esta no tiene ninguna tabla. Para crear una tabla, debemos conectarnos
-## 6. Correr el CLI
+## 5. Correr el CLI
 ```bash
 docker run --name cli-py --network=my-bridge-network -it cli-py
 ```
